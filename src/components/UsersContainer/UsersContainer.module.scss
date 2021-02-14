@@ -1,0 +1,38 @@
+@import "../../styles/variables";
+
+.container {
+  background: $color-smokywhite-dark;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.box {
+  background: #fff;
+  border-radius: 1rem;
+  height: 80%;
+  width: 70%;
+  overflow: scroll;
+}
+
+.inputWrapper {
+  width: 100%;
+  // padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  width: 95%;
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 2rem 0.5rem 0.5rem;
+
+  &::placeholder {
+    font-size: 1.3rem;
+    font-weight: l;
+  }
+}
