@@ -2,21 +2,17 @@ import React from "react";
 import { IUser, IUserList } from "../../interface";
 import User from "../User/User";
 
-function UsersList({ characters }: IUserList) {
-  const addTag = (data: IUser[], id: string, tag: string) => {
-    const newData = data.map((item) => {
-      if (item.id === id) {
-        return {
-          ...item,
-          ["tag"]: [...['tags'],tag],
-        };
-      }
-    });
-  };
+type UserListProps = {
+  submit?: any;
+  characters: IUser[];
+  inputTag: string;
+  handleTagInput: any;
+};
+function UsersList({ characters, submit, inputTag, handleTagInput }: UserListProps) {
   return (
     <>
       {characters.map((data: IUser, index) => (
-        <User key={index} {...data} />
+        <User handleTagInput={handleTagInput} key={index} userData={data} submit={submit} inputTag={inputTag} />
       ))}
     </>
   );

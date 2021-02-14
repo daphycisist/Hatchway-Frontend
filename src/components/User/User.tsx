@@ -8,18 +8,21 @@ const average = (grades: string[]) => {
   return sum / grades.length;
 };
 
+type UserProps = {
+  userData: IUser,
+  submit: any,
+  inputTag: string,
+  handleTagInput: any
+}
+
 function User({
-  city,
-  company,
-  email,
-  firstName,
-  grades,
-  id,
-  lastName,
-  pic,
-  skill,
-}: IUser) {
+  userData,
+  submit,
+  inputTag,
+  handleTagInput
+}: UserProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const { firstName, lastName, pic, company,email, skill, grades, tags, id}= userData
   return (
     <div className={styles.container}>
       <div className={styles.containerImg}>
@@ -34,6 +37,11 @@ function User({
           <p>Company : {company}</p>
           <p>Skill : {skill}</p>
           <p>Average : {average(grades)}%</p>
+          <div>
+            {tags.map((tag) => (
+              <span>{tag}</span>
+            ))}
+          </div>
           {isOpen && (
             <div className={styles.scores}>
               {grades.map((grade, index) => (
@@ -43,7 +51,14 @@ function User({
               ))}
             </div>
           )}
-          <input placeholder="Add tag" className={styles.addTag}/>
+          <input
+            id={id}
+            placeholder="Add tag"
+            className={styles.addTag}
+            onKeyDown={submit}
+            value={inputTag}
+            onChange={handleTagInput}
+          />
         </div>
       </div>
       <div className={styles.viewMore} onClick={() => setIsOpen(!isOpen)}>

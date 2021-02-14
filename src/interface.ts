@@ -8,6 +8,7 @@ export interface IUser {
   lastName: string;
   pic: string;
   skill: string;
+  tags: string[];
 }
 
 export interface IUserList {
