@@ -17,18 +17,22 @@
   &Details {
     width: 70%;
     box-sizing: border-box;
+
     h1 {
       font-size: 3rem;
       margin: 0;
+      text-transform: uppercase;
     }
+
     &__more {
       padding-left: 2rem;
+      font-weight: 300;
 
-      .scores{
-       span{
-           margin-left: 1rem;
-       }
-    }
+      .scores {
+        span {
+          margin-left: 1rem;
+        }
+      }
     }
   }
 }
@@ -40,9 +44,22 @@
   font-size: 2rem;
 }
 
-.addTag{
-    border: none;
-    border-bottom: 2px solid rgb(71, 70, 70);
-    font-size: 1rem;
-    outline-width: 0;
+.addTag {
+  border: none;
+  border-bottom: 2px solid rgb(71, 70, 70);
+  font-size: 1rem;
+  outline-width: 0;
+  margin-top: 0.2rem;
+}
+
+.tagsWrapper {
+  padding-bottom: 1rem;
+}
+
+.tag {
+  border-radius: 0.3rem;
+  background-color: rgb(216, 216, 216);
+  padding: 0.5rem 0.6rem;
+  font-size: 1rem;
+  margin-right: 0.3rem;
 }

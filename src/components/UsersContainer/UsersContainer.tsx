@@ -24,8 +24,7 @@ function UserContainer() {
           ...student,
           tags: [],
         }));
-        console.log(addTagData);
-
+        
         setData(addTagData);
         setFilteredData(addTagData);
       } catch (error) {
@@ -37,13 +36,16 @@ function UserContainer() {
 
   useEffect(() => {
     const { name, tag } = filter;
-    const newFilteredData = data.filter(
+     const newFilteredData = data.filter(
       (user: IUser) =>
-        user.firstName.includes(name) || user.lastName.includes(name)
+        (user.firstName.toLowerCase().includes(name.toLowerCase()) ||
+         user.lastName.toLowerCase().includes(name.toLowerCase()))
+         &&
+        (tag ? user?.tags?.find((item) => item.includes(tag)) : true)
     );
-
     setFilteredData(newFilteredData);
   }, [data, filter]);
+
 
   const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -57,7 +59,7 @@ function UserContainer() {
       if (item.id === id) {
         return {
           ...item,
-          tags: [...item.tags, tag],
+          tags: [...item.tags, tag]
         };
       } else {
         return item;
@@ -66,10 +68,6 @@ function UserContainer() {
     setData(newData);
   };
 
-  console.log("====================================");
-  console.log(data);
-  console.log("====================================");
-
   const handleSubmit = (event: any) => {
     let { value, id } = event.target;
     if (!value) {
@@ -77,14 +75,14 @@ function UserContainer() {
     }
     if (event.key === "Enter") {
       addTag(data, id, value);
-      setInputTag('')
+      setInputTag("");
     }
   };
 
-  const handleTagInput = (e:any) => {
+  const handleTagInput = (e: any) => {
     const { value } = e.target;
-    setInputTag(value)
-  }
+    setInputTag(value);
+  };
 
   return (
     <div className={styles.container}>

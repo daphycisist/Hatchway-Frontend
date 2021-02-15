@@ -1,5 +1,5 @@
 import React from "react";
-import { IUser, IUserList } from "../../interface";
+import { IUser } from "../../interface";
 import User from "../User/User";
 
 type UserListProps = {

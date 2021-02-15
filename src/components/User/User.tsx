@@ -9,20 +9,25 @@ const average = (grades: string[]) => {
 };
 
 type UserProps = {
-  userData: IUser,
-  submit: any,
-  inputTag: string,
-  handleTagInput: any
-}
+  userData: IUser;
+  submit: any;
+  inputTag: string;
+  handleTagInput: any;
+};
 
-function User({
-  userData,
-  submit,
-  inputTag,
-  handleTagInput
-}: UserProps) {
+function User({ userData, submit, inputTag, handleTagInput }: UserProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const { firstName, lastName, pic, company,email, skill, grades, tags, id}= userData
+  const {
+    firstName,
+    lastName,
+    pic,
+    company,
+    email,
+    skill,
+    grades,
+    tags,
+    id,
+  } = userData;
   return (
     <div className={styles.container}>
       <div className={styles.containerImg}>
@@ -37,20 +42,21 @@ function User({
           <p>Company : {company}</p>
           <p>Skill : {skill}</p>
           <p>Average : {average(grades)}%</p>
-          <div>
-            {tags.map((tag) => (
-              <span>{tag}</span>
-            ))}
-          </div>
+
           {isOpen && (
             <div className={styles.scores}>
               {grades.map((grade, index) => (
-                <p>
+                <p key={index}>
                   Test{index + 1} : <span>{grade}%</span>
                 </p>
               ))}
             </div>
           )}
+          <div className={styles.tagsWrapper}>
+            {tags.map((tag, index) => (
+              <span key={ index }className={styles.tag}>{tag}</span>
+            ))}
+          </div>
           <input
             id={id}
             placeholder="Add tag"
